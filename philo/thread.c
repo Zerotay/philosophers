@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:52 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:04:53 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:48:37 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	is_full(t_philo *philo, t_game *game)
 	if (game->mineat != -1)
 		while (++i < game->numphilo && \
 				game->philos[i].eatcount >= game->mineat)
-			continue;
+			continue ;
 	if (i == game->numphilo)
 	{
 		game->mineat = 0;
@@ -75,8 +75,8 @@ void	is_starve(t_philo *philo, t_game *game)
 			pthread_mutex_unlock(&(philo->game->while_eating));
 			usleep(100);
 		}
-			if (!game->death)
-				break ;
+		if (!game->death)
+			break ;
 		is_full(philo, game);
 	}
 }

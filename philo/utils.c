@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:59 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:07:43 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:49:15 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ int	error(t_game *game)
 			pthread_detach(game->philos[i].thid);
 	i = -1;
 	while (++i < game->numphilo)
-			pthread_mutex_destroy(&(game->forks[i]));
+		pthread_mutex_destroy(&(game->forks[i]));
 	return (1);
 }
-
 
 void	print(int num, char *str, t_game game)
 {
@@ -54,7 +53,7 @@ void	pass(int time)
 
 long long	present_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);

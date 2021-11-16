@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:08:46 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:50:43 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	init_game(t_game *game, int gc, char **gv)
 	game->philos = (t_philo *)malloc(sizeof(t_philo) * game->numphilo);
 	if (!game->philos)
 		return (error(game));
-	game->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * game->numphilo);
+	game->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
+				* game->numphilo);
 	if (!game->forks)
 		return (error(game));
 	i = -1;
@@ -65,7 +66,7 @@ void	end_thread(t_game *game)
 	return ;
 }
 
-int main(int gc, char **gv)
+int	main(int gc, char **gv)
 {
 	int		i;
 	t_game	game;
@@ -85,7 +86,8 @@ int main(int gc, char **gv)
 	i = -1;
 	game.start_time = present_time();
 	while (++i < game.numphilo)
-		if (pthread_create(&(game.philos[i].thid), NULL, rotate, &(game.philos[i])))
+		if (pthread_create(&(game.philos[i].thid), NULL, rotate, \
+			&(game.philos[i])))
 			return (error(&game));
 	is_starve(game.philos, &game);
 	end_thread(&game);

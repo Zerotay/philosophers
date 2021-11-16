@@ -6,19 +6,18 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:05:02 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:05:44 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:51:46 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
-#define PHILO_H
-
-#include <pthread.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/time.h>
+# define PHILO_H
+# include <pthread.h>
+# include <stdio.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <sys/time.h>
 
 struct s_game;
 
@@ -31,7 +30,7 @@ typedef struct	s_philo
 	struct s_game	*game;
 	long long		tictoc;
 	int				eatcount;
-}				t_philo;
+}					t_philo;
 
 typedef struct	s_game
 {
@@ -45,7 +44,7 @@ typedef struct	s_game
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	while_eating;
-}				t_game;
+}					t_game;
 
 int			error(t_game *game);
 int			ft_atoi(const char *str);
