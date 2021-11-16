@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:52 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:48:37 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/17 00:18:18 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	is_starve(t_philo *philo, t_game *game)
 		i = -1;
 		while (++i < philo->game->numphilo)
 		{
+			usleep(100);
 			pthread_mutex_lock(&(philo->game->while_eating));
 			if (present_time() - game->philos[i].tictoc > game->livetime)
 			{
@@ -73,7 +74,6 @@ void	is_starve(t_philo *philo, t_game *game)
 				game->death = 0;
 			}
 			pthread_mutex_unlock(&(philo->game->while_eating));
-			usleep(100);
 		}
 		if (!game->death)
 			break ;
