@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:05:02 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:51:46 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:57:05 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-struct s_game;
+struct		s_game;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		thid;
 	int				num;
@@ -32,7 +32,7 @@ typedef struct	s_philo
 	int				eatcount;
 }					t_philo;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	int				numphilo;
 	int				livetime;
