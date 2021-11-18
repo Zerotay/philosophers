@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:59 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/17 00:57:01 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:06:41 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	error2(t_game *game)
 	i = -1;
 	while (++i < game->numphilo)
 		pthread_mutex_destroy(&(game->forks[i]));
-	error1(game);
+	return (error1(game));
 }
 
 void	print(int num, char *str, t_game game)
