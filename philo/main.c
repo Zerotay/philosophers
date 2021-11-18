@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/18 16:08:50 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:17:28 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ int	main(int gc, char **gv)
 			return (error2(&game));
 	is_starve(game.philos, &game);
 	end_thread(&game);
-	// system("leaks philo > log; cat log | grep  leaks; rm -rf log");
 	return (0);
 }
