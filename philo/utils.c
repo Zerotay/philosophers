@@ -6,20 +6,25 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:59 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:49:15 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/17 00:57:01 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	error(t_game *game)
+int	error1(t_game *game)
 {
-	int	i;
-
 	if (game->philos)
 		free(game->philos);
 	if (game->forks)
 		free(game->forks);
+	return (0);
+}
+
+int	error2(t_game *game)
+{
+	int	i;
+
 	i = -1;
 	while (++i < game->numphilo)
 		if (game->philos[i].thid)
@@ -27,7 +32,7 @@ int	error(t_game *game)
 	i = -1;
 	while (++i < game->numphilo)
 		pthread_mutex_destroy(&(game->forks[i]));
-	return (1);
+	error1(game);
 }
 
 void	print(int num, char *str, t_game game)

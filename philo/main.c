@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:50:43 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:01:56 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	init_base(t_game *game, int gc, char **gv)
 	game->sleeptime = ft_atoi(gv[4]);
 	game->mineat = -1;
 	if (gc == 6)
+	{
 		game->mineat = ft_atoi(gv[5]);
+		if (game->mineat <= 0)
+			return (1);
+	}
 	game->death = 1;
 	game->philos = 0;
 	game->forks = 0;
@@ -38,11 +42,11 @@ int	init_game(t_game *game, int gc, char **gv)
 		return (1);
 	game->philos = (t_philo *)malloc(sizeof(t_philo) * game->numphilo);
 	if (!game->philos)
-		return (error(game));
+		return (error1(game));
 	game->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
 				* game->numphilo);
 	if (!game->forks)
-		return (error(game));
+		return (error1(game));
 	i = -1;
 	while (++i < game->numphilo)
 		pthread_mutex_init(&(game->forks[i]), NULL);
@@ -72,7 +76,7 @@ int	main(int gc, char **gv)
 	t_game	game;
 
 	if (init_game(&game, gc, gv))
-		return (error(&game));
+		return (error1(&game));
 	i = -1;
 	while (++i < game.numphilo)
 	{
@@ -88,8 +92,9 @@ int	main(int gc, char **gv)
 	while (++i < game.numphilo)
 		if (pthread_create(&(game.philos[i].thid), NULL, rotate, \
 			&(game.philos[i])))
-			return (error(&game));
+			return (error2(&game));
 	is_starve(game.philos, &game);
 	end_thread(&game);
+	// system("leaks philo > log; cat log | grep  leaks; rm -rf log");
 	return (0);
 }

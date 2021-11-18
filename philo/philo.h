@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:05:02 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/16 23:57:05 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/17 00:52:57 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ typedef struct s_game
 	pthread_mutex_t	while_eating;
 }					t_game;
 
-int			error(t_game *game);
+int			error1(t_game *game);
+int			error2(t_game *game);
 int			ft_atoi(const char *str);
 void		print(int num, char *str, t_game game);
 void		pass(int time);
