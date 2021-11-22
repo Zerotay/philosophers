@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/18 16:17:28 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:21:12 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	init_base(t_game *game, int gc, char **gv)
 		if (game->mineat <= 0)
 			return (1);
 	}
-	if (game->numphilo < 2 || game->numphilo > 200 || game->livetime < 0 || \
+	if (game->numphilo > 200 || game->livetime < 0 || \
 	game->eattime < 0 || game->sleeptime < 0)
 		return (1);
 	return (0);
@@ -41,15 +41,22 @@ int	init_game(t_game *game, int gc, char **gv)
 	if (init_base(game, gc, gv))
 		return (1);
 	game->philos = (t_philo *)malloc(sizeof(t_philo) * game->numphilo);
-	if (!game->philos)
-		return (error1(game));
 	game->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
 				* game->numphilo);
-	if (!game->forks)
+	if (!game->forks || !game->philos)
 		return (error1(game));
 	i = -1;
 	while (++i < game->numphilo)
 		pthread_mutex_init(&(game->forks[i]), NULL);
+	if (game->numphilo  == 1)
+	{
+		game->philos[0].game = game;
+		if (pthread_create(&(game->philos[0].thid), NULL, if_only_one, &(game->philos[0])))
+			return (error2(game));
+		pthread_join(game->philos[0].thid,  0);
+		pthread_mutex_destroy(&(game->forks[0]));
+		return (1);
+	}
 	pthread_mutex_init(&(game->while_eating), NULL);
 	return (0);
 }

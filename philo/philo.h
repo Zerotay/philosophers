@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:05:02 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/17 00:52:57 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/22 10:49:56 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void		pass(int time);
 long long	present_time(void);
 void		*rotate(void *all);
 void		is_starve(t_philo *philo, t_game *game);
+void		*if_only_one(void *all);
 
 #endif
