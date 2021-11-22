@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/22 11:29:41 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:31:57 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	init_base(t_game *game, int gc, char **gv)
 {
+	if (gc < 5 || gc > 7)
+		return (1);
 	game->numphilo = ft_atoi(gv[1]);
 	game->livetime = ft_atoi(gv[2]);
 	game->eattime = ft_atoi(gv[3]);
@@ -28,7 +30,7 @@ int	init_base(t_game *game, int gc, char **gv)
 		if (game->mineat <= 0)
 			return (1);
 	}
-	if (game->numphilo > 200 || game->livetime < 0 || gc < 5 || gc > 7 || \
+	if (game->numphilo > 200 || game->livetime < 0 || \
 		game->eattime < 0 || game->sleeptime < 0)
 		return (1);
 	return (0);
