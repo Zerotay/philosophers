@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:52 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/22 11:09:09 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:25:41 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*if_only_one(void *all)
 	t_philo	*philo;
 
 	philo = all;
-	philo->game->start_time =  present_time();
+	philo->game->start_time = present_time();
 	pthread_mutex_lock(&(philo->game->forks[0]));
 	print(0, "has taken a fork", *philo->game);
 	pass(philo->game->livetime);

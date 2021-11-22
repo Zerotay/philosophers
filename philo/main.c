@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/22 11:21:12 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:26:16 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ int	init_game(t_game *game, int gc, char **gv)
 	i = -1;
 	while (++i < game->numphilo)
 		pthread_mutex_init(&(game->forks[i]), NULL);
-	if (game->numphilo  == 1)
+	if (game->numphilo == 1)
 	{
 		game->philos[0].game = game;
-		if (pthread_create(&(game->philos[0].thid), NULL, if_only_one, &(game->philos[0])))
+		if (pthread_create(&(game->philos[0].thid), NULL, if_only_one, \
+				&(game->philos[0])))
 			return (error2(game));
-		pthread_join(game->philos[0].thid,  0);
+		pthread_join(game->philos[0].thid, 0);
 		pthread_mutex_destroy(&(game->forks[0]));
 		return (1);
 	}
