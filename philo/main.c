@@ -6,7 +6,7 @@
 /*   By: dongguki <dongguki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:04:49 by dongguki          #+#    #+#             */
-/*   Updated: 2021/11/22 11:33:15 by dongguki         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:34:08 by dongguki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	init_base(t_game *game, int gc, char **gv)
 {
 	game->philos = 0;
 	game->forks = 0;
-	if (gc < 5 || gc > 7)
+	if (gc < 5 || gc > 6)
 		return (1);
 	game->numphilo = ft_atoi(gv[1]);
 	game->livetime = ft_atoi(gv[2]);
